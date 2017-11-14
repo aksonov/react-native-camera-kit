@@ -161,15 +161,20 @@ export default class CameraScreenBase extends Component {
         <TouchableOpacity
           onPress={() => this.onCaptureImagePressed()}
         >
-          <Image
-            style={styles.captureButton}
-            source={this.props.captureButtonImage}
-            resizeMode={'contain'}
-          >
-            <Text style={styles.captureNumber}>
-              {this.numberOfImagesTaken()}
-            </Text>
-          </Image>
+          <View style={{width:66, height:66}}>
+            <View style={styles.captureFrame}>
+              <Image
+                style={styles.captureButton}
+                source={this.props.captureButtonImage}
+                resizeMode={'contain'}
+              />
+            </View>
+            <View style={styles.captureFrame}>
+              <Text style={styles.captureNumber}>
+                {this.numberOfImagesTaken()}
+              </Text>
+            </View>
+          </View>
         </TouchableOpacity>
       </View >
   }
@@ -321,12 +326,19 @@ const styles = StyleSheet.create(_.merge(styleObject, {
     flex: 1,
     alignSelf: 'center',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   captureNumber: {
     justifyContent: 'center',
     color: 'black',
     backgroundColor: 'transparent'
+  },
+  captureFrame: {
+    position: 'absolute',
+    top:0,
+    left:0,
+    width:66,
+    height:66
   },
   bottomButton: {
     flex: 1,
@@ -340,5 +352,5 @@ const styles = StyleSheet.create(_.merge(styleObject, {
     justifyContent: 'flex-end',
     alignItems: 'center',
     padding: 10
-  }
+  },
 }));
